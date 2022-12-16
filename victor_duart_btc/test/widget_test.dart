@@ -8,12 +8,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:victor_duart_todo/main.dart';
+
+import 'package:victor_duart_btc/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(BtcList());
+    await tester.pumpWidget(Btc());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

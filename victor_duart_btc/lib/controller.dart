@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import 'model.dart';
@@ -27,10 +29,16 @@ class Controller{
 @collection
 class Tarea {
 
-  Tarea(this.titulo);
+  Tarea(this.dataOrdre,this.open,this.max,this.min,this.close,this.volume);
 
   Id id = Isar.autoIncrement;
-   final String? titulo;
+   final DateTime? dataOrdre;
+   final float? open;
+   final float? max;
+   final float? min;
+   final float? close;
+   final Int? volume;
+
 
 }
 

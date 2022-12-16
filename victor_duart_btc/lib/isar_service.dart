@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:isar/isar.dart';
-import 'package:victor_duart_todo/model.dart';
+import 'package:victor_duart_btc/model.dart';
 import 'controller.dart';
 
 class IsarService {

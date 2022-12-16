@@ -4,7 +4,7 @@ import '/isar_service.dart';
 import 'controller.dart';
 import 'package:isar/isar.dart';
 
-//Hola Carles la persistencia esta a medias jajaj
+//Hola Carles la persistencia esta presente
 // Se pinta al añadir pero al reiniciar no se pinta pero esta en la base de datos
 //puedes acceder a la base de datos desde el link que sale en la consola (Solo abre con chromium)
 
@@ -29,10 +29,7 @@ class BtcList extends StatefulWidget {
   final Controller elControlador = Controller();
   @override
   _BtcListState createState() => _BtcListState();
-
-
 }
-
 
 
 //Referencia al Controlador
@@ -60,20 +57,37 @@ class _BtcListState extends State<BtcList> {
           if (snapshot.hasData){}
           List<Widget> newlist = snapshot.data ?? [];
           return Scaffold(
-            appBar: AppBar(title: const Text('To-Do List')),
+            appBar: AppBar(title: const Text('BTC List')),
             body: ListView(children: _getListItems()),
-            floatingActionButton: FloatingActionButton(
-                onPressed: () => _displayDialog(context),
-                tooltip: 'Add Item',
-                child: Icon(Icons.add)),
-          );
+            floatingActionButton:  Wrap( //will break to another line on overflow
+                direction: Axis.horizontal, //use vertical to show  on vertical axis
+                children: <Widget>[
+            Container(
+            margin:EdgeInsets.all(10),
+              child: FloatingActionButton(
+                onPressed: () => '',
+                  //action code for button 1
+                  tooltip: 'Delete Btc',
+                child: Icon(Icons.delete),
+              )
+          ), //button first
 
+          Container(
+          margin:EdgeInsets.all(10),
+          child: FloatingActionButton(
+          onPressed: () => _displayDialog(context),
+          tooltip: 'Add Item',
+          child: Icon(Icons.add)),
+          )
+
+              ],
+            ),
+          );
 
 
         },
     );
   }
-
   void _addTodoItem(String title) {
     // Wrapping it inside a set state will notify
     // the app that the state has changed
@@ -99,7 +113,7 @@ class _BtcListState extends State<BtcList> {
             title: const Text('Add a task to your list'),
             content: TextField(
               controller: _textFieldController,
-              decoration: const InputDecoration(hintText: 'Enter task here'),
+              decoration: const InputDecoration(hintText: 'Enter DATE/OPEN/HIGH/LOW/CLOSE/ADJ VOLUME/VOLUME'),
             ),
             actions: <Widget>[
               // add button
@@ -107,7 +121,7 @@ class _BtcListState extends State<BtcList> {
                 child: const Text('ADD'),
                 onPressed: () {
                   Navigator.of(context).pop();
-                  widget.isarService.createTask(Tarea(_textFieldController.text));
+                  widget.isarService.createTask(Tarea());
                   _addTodoItem(_textFieldController.text);
                 },
               ),
@@ -133,7 +147,7 @@ class _BtcListState extends State<BtcList> {
     //widget.elControlador.getTasks()
       {
         for (Tarea tarea in listaTareas) {
-        _todoWidgets.add(_buildTodoItem(tarea.titulo!));
+        _todoWidgets.add(_buildTodoItem(tarea.dataOrdre,tarea.open,tarea.max,tarea.min,tarea.close,tarea.volume));
       }
     }
     return _todoWidgets;
