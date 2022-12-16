@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/victor_duart_btc/victor_duart_btc.iml" filepath="$PROJECT_DIR$/victor_duart_btc/victor_duart_btc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/victor_duart_btc/android/victor_duart_btc_android.iml" filepath="$PROJECT_DIR$/victor_duart_btc/android/victor_duart_btc_android.iml" />
+    </modules>
+  </component>
+</project>
